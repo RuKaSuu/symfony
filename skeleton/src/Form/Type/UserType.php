@@ -21,6 +21,7 @@ class UserType extends AbstractType
             ->add('age')
             ->add('address')
             ->add('levels')
+            ->add('profilePicture')
             ->add('save', SubmitType::class, ['label' => 'Create User'])
         ;
     }
