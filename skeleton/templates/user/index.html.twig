@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello UserController! ✅</h1>
+
+    This friendly message is coming from:
+{#    Render the form in UserController#}
+
+{#    {{ form_start(form) }}#}
+{#    {{ form_widget(form) }}#}
+{#    {{ form_end(form) }}#}
+
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.surname) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.age) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.address) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.levels) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.save) }}
+        </div>
+    </div>
+
+
+    {{ form_end(form) }}
+
+{#    <form action="{{ controller(#}
+{#        'App\\Controller\\UserController::createUser',#}
+{#        {'name': $_POST['name'] , 'surname': $_POST['surname'],'age': $_POST['age'], 'address' : $_POST['address'], 'levels' : $_POST['levels']})#}
+{#    }}" method="post">#}
+{#        <input type="text" placeholder="name">#}
+{#        <input type="text" placeholder="surname">#}
+{#        <input type="text" placeholder="age">#}
+{#        <input type="text" placeholder="address">#}
+{#        <input type="text" placeholder="levels">#}
+{#        <input type="submit" value="Send">#}
+{#    </form>#}
+
+{#    <code>{{ absolute_url(path('user')) }}</code>#}
+{#    <code>{{ render(controller(#}
+{#            'App\\Controller\\UserController::createUser',#}
+{#            {'name': 'dede', 'surname': 'deded', 'age' : 19 , 'address' : '14 rue du polisson', 'levels': 1}#}
+{#        )) }}</code>#}
+
+{#    <ul>#}
+{#        <li>Your controller at <code><a href="{{ 'C:/Users/lucas/OneDrive/Bureau/Git/symfony/skeleton/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>#}
+{#        <li>Your template at <code><a href="{{ 'C:/Users/lucas/OneDrive/Bureau/Git/symfony/skeleton/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>#}
+{#    </ul>#}
+</div>
+{% endblock %}
