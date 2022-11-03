@@ -38,7 +38,6 @@ class User
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $Skills = [];
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -127,4 +126,5 @@ class User
 
         return $this;
     }
+
 }
