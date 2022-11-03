@@ -24,6 +24,8 @@
     "dependencies": {
         "autoprefixer": "^10.4.13",
         "bootstrap": "^5.2.2",
+        "feather-icons": "^4.29.0",
+        "font-awesome": "^4.7.0",
         "postcss-loader": "^7.0.1"
     }
 }
