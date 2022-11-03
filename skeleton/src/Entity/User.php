@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -30,6 +31,9 @@ class User
 
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $profilePicture = null;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $Skills = [];
 
     public function getId(): ?int
     {
@@ -104,6 +108,15 @@ class User
     public function setProfilePicture(?string $profilePicture): self
     {
         $this->profilePicture = $profilePicture;
+
+    public function getSkills(): array
+    {
+        return $this->Skills;
+    }
+
+    public function setSkills(?array $Skills): self
+    {
+        $this->Skills = $Skills;
 
         return $this;
     }
