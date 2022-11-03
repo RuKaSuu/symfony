@@ -573,12 +573,6 @@
                         {{ form(form.Skills, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form.Skills) }}
                     </div>
-                    {# <div class="form-row">
-                        <div class="input-group js-input-file">
-                            <label class="label--file" for="file">Copypast url img</label>
-                            <label for="image"></label><input class="input-file" type="text" image="image" id="image">
-                        </div>
-                    </div> #}
                     <div class="d-flex justify-content-evenly  pt-3">
                         <button class="btn btn-outline-secondary btn--radius-2 mr-1" type="submit">Retour</button>
                         {{ form_widget(form.save, {'attr': {'class': 'btn btn--radius-2 btn-primary'}}) }}
@@ -586,32 +580,9 @@
                     {{ form_end(form) }}
                 </div>
             </div>
-
         </div>
     </div>
 
 
 {% endblock %}
-    {#    <form action="{{ controller( #}
-    {#        'App\\Controller\\UserController::createUser', #}
-    {#        {'name': $_POST['name'] , 'surname': $_POST['surname'],'age': $_POST['age'], 'address' : $_POST['address'], 'levels' : $_POST['levels']}) #}
-    {#    }}" method="post"> #}
-    {#        <input type="text" placeholder="name"> #}
-    {#        <input type="text" placeholder="surname"> #}
-    {#        <input type="text" placeholder="age"> #}
-    {#        <input type="text" placeholder="address"> #}
-    {#        <input type="text" placeholder="levels"> #}
-    {#        <input type="submit" value="Send"> #}
-    {#    </form> #}
-
-    {#    <code>{{ absolute_url(path('user')) }}</code> #}
-    {#    <code>{{ render(controller( #}
-    {#            'App\\Controller\\UserController::createUser', #}
-    {#            {'name': 'dede', 'surname': 'deded', 'age' : 19 , 'address' : '14 rue du polisson', 'levels': 1} #}
-    {#        )) }}</code> #}
-
-    {#    <ul> #}
-    {#        <li>Your controller at <code><a href="{{ 'C:/Users/lucas/OneDrive/Bureau/Git/symfony/skeleton/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li> #}
-    {#        <li>Your template at <code><a href="{{ 'C:/Users/lucas/OneDrive/Bureau/Git/symfony/skeleton/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li> #}
-    {#    </ul> #}
 
