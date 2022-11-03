@@ -35,9 +35,9 @@ class JobsType extends AbstractType
         ];
 
         $builder
-            ->add('jobName', TextType::class)
-            ->add('jobCreator', TextType::class)
-            ->add('jobDegree', ChoiceType ::class, [
+            ->add('Name', TextType::class)
+            ->add('Creator', TextType::class)
+            ->add('Degree', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
                     'Bac+2' => '2',
@@ -46,15 +46,16 @@ class JobsType extends AbstractType
                     'Bac+5' => '5',
                 ],
             ])
-            ->add('jobDescription', TextType::class)
-//            ->add('jobSkills', ChoiceType::class, [
-//                'choices' => $skills,
-//                'multiple' => true,
-//            ])
-            ->add('jobLocation', TextType::class)
+            ->add('Description', TextType::class)
+            ->add('Skills', ChoiceType::class, [
+                'choices' => $skills,
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('Location', TextType::class)
 //            ->add('jobPicture', TextType::class)
             ->add('save', SubmitType::class , [
-                'label' => 'Post',
+                'label' => 'Create Jobs',
             ])
         ;
     }
