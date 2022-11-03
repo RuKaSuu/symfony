@@ -17,7 +17,34 @@
 {#    {{ form_widget(form) }}#}
 {#    {{ form_end(form) }}#}
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.surname) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.age) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.address) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.levels) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.save) }}
+        </div>
+    </div>
+
+
+    {{ form_end(form) }}
 
 {#    <form action="{{ controller(#}
 {#        'App\\Controller\\UserController::createUser',#}
