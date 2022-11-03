@@ -63,11 +63,12 @@ class JobsController extends AbstractController
         ];
 
         $form = $this->createFormBuilder()
-            ->add('jobCreator', TextType::class)
-            ->add('jobDegree', TextType::class)
-            ->add('jobDescription', TextType::class)
-            ->add('jobTitle', TextType::class)
-            ->add('jobLocation', TextType::class)
+            ->add('Name', TextType::class)
+            ->add('Creator', TextType::class)
+            ->add('Degree', TextType::class)
+            ->add('Description', TextType::class)
+            ->add('Title', TextType::class)
+            ->add('Location', TextType::class)
             ->add('Skills', ChoiceType::class, [
                 'choices' => $skills,
                 'multiple' => true,
@@ -81,12 +82,13 @@ class JobsController extends AbstractController
             $data = $form->getData();
             $entityManager = $doctrine->getManager();
             $job = new Jobs();
-            $job->setJobCreator($data['jobCreator']);
-            $job->setJobPostDate(new \DateTime());
-            $job->setJobDegree($data['jobDegree']);
-            $job->setJobDescription($data['jobDescription']);
-            $job->setJobTitle($data['jobTitle']);
-            $job->setJobLocation($data['jobLocation']);
+            $job->setName($data['Name']);
+            $job->setCreator($data['Creator']);
+            $job->setPostDate(new \DateTime());
+            $job->setDegree($data['Degree']);
+            $job->setDescription($data['Description']);
+            $job->setTitle($data['Title']);
+            $job->setLocation($data['Location']);
 //            $job->setJobSkills($data['Skills']);
             $entityManager->persist($job);
             $entityManager->flush();
