@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Jobs;
 use App\Entity\User;
+use App\Form\Type\JobsType;
 use App\Repository\JobsRepository;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
@@ -43,54 +44,16 @@ class JobsController extends AbstractController
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
-        $skills = [
-            'PHP' => 'PHP',
-            'Java' => 'Java',
-            'C#' => 'C#',
-            'C++' => 'C++',
-            'Python' => 'Python',
-            'Ruby' => 'Ruby',
-            'JavaScript' => 'JavaScript',
-            'C' => 'C',
-            'Go' => 'Go',
-            'Rust' => 'Rust',
-            'Swift' => 'Swift',
-            'Kotlin' => 'Kotlin',
-            'Dart' => 'Dart',
-            'Lua' => 'Lua',
-            'Assembly' => 'Assembly',
-            'Scratch' => 'Scratch',
-        ];
-
-        $form = $this->createFormBuilder()
-            ->add('Name', TextType::class)
-            ->add('Creator', TextType::class)
-            ->add('Degree', TextType::class)
-            ->add('Description', TextType::class)
-            ->add('Title', TextType::class)
-            ->add('Location', TextType::class)
-            ->add('Skills', ChoiceType::class, [
-                'choices' => $skills,
-                'multiple' => true,
-                'expanded' => true,
-            ])
-            ->getForm();
-
+        $job = new Jobs();
+        $form = $this->createForm(JobsType::class, $job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $entityManager = $doctrine->getManager();
-            $job = new Jobs();
-            $job->setName($data['Name']);
-            $job->setCreator($data['Creator']);
-            $job->setPostDate(new \DateTime());
-            $job->setDegree($data['Degree']);
-            $job->setDescription($data['Description']);
-            $job->setTitle($data['Title']);
-            $job->setLocation($data['Location']);
-//            $job->setJobSkills($data['Skills']);
-            $entityManager->persist($job);
+            $data->setJobPostDate(new \DateTime());
+            $data->setJobTitle($data->getJobName());
+            $entityManager->persist($data);
             $entityManager->flush();
 
             return $this->redirectToRoute('jobs_render');
