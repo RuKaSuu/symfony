@@ -5,10 +5,21 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface;
+use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
+use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
+
+//    protected $matcher;
+//    protected $controllerResolver;
+//    protected $argumentResolver;
+//
+    //Create a function __construct
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

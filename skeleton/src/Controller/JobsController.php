@@ -46,6 +46,7 @@ class JobsController extends AbstractController
 
         $job = new Jobs();
         $form = $this->createForm(JobsType::class, $job);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,6 +55,7 @@ class JobsController extends AbstractController
             $data->setPostDate(new \DateTime());
             $data->setTitle($data->getName());
             $entityManager->persist($data);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('jobs_render');
