@@ -40,10 +40,12 @@ class UserType extends AbstractType
             'Scratch' => 'Scratch',
         ];
         $builder
+
             ->add('name',TextType::class)
             ->add('surname', TextType::class)
             ->add('age', IntegerType::class)
             ->add('address', TextType::class)
+            ->add('profilePicture', TextType::class)
             ->add('levels', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
