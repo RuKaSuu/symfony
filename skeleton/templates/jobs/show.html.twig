@@ -4,47 +4,68 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-        .tbody tr:nth-child(odd) { background-color: #E6E6E6; text-align: center; }
-        .tbody td { padding: 10px; }
+
+        .testimonial-card .card-up {
+            height: 80px;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+        }
+
+        .aqua-gradient {
+            background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+        }
+
+        .testimonial-card .avatar {
+            width: 140px;
+            margin-top: -75px;
+        }
+
     </style>
 
-    <div class="example-wrapper">
-        {{ include('jobs/nav.html.twig') }}
-        <h1>Jobs</h1>
+    {% include('navbar.html.twig') %}
+    <div class="text-center d-flex justify-content-center align-items-center">
+        <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Location</th>
-                        <th>Create At</th>
-                        <th>Minimum Degree</th>
-                    </tr>
-                </thead>
-                <tbody class="tbody">
-                {% for job in jobs %}
-                    <tr>
-                        <td>{{ job.id }}</td>
-                        <td>{{ job.jobTitle }}</td>
-                        <td>{{ job.jobDescription }}</td>
-                        <td>{{ job.jobLocation }}</td>
-                        <td>{{ job.jobPostDate ? job.jobPostDate|date('d-m-Y') : '' }}</td>
-                        <td>{{ job.jobDegree }}</td>
-                        <td>
-                            <a href="{{ path('job_delete', {'id': job.id}) }}">Delete</a>
-                        </td>
+            <h1 class="m-5">Listes des Offres d'emplois</h1>
 
-                    </tr>
+            <div class="container text-center">
+                {% if jobs %}
+                    <div class="row">
+                        {% for job in jobs %}
+                            <div class="col mb-5">
+                                <div class="container">
+                                    <section class="mx-auto my-5" style="width: 18rem;">
+                                        <div class="card testimonial-card mt-2 mb-3">
+                                            <div class="card-up aqua-gradient"></div>
+                                            <div class="avatar mx-auto white">
+{#                                                {% if user.profilePicture == "" %}#}
+{#                                                    <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">#}
+{#                                                {% else %}#}
+{#                                                    <img class="rounded-circle w-50 h-50" src="{{ user.profilePicture }}" alt="">#}
+{#                                                {% endif %}#}
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title font-weight-bold">{{ job.Name }}</h4>
+                                                <h6 class="card-subtitle mb-2 text-muted">{{ job.Title }}</h6>
+                                                <hr>
+                                                <p>
+                                                    {{ job.Description }} <br>
+{#                                                    {% for skill in job.skills %}#}
+{#                                                        <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>#}
+{#                                                    {% endfor %}#}
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% else %}
-                    <tr>
-                        <td colspan=\"18\">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-
+                    <h1 class="m-5">Aucun utilisateur trouvé</h1>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}
