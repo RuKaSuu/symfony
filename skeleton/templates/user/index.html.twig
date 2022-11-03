@@ -540,7 +540,7 @@
 
     <div class="page-wrapper p-t-100 p-b-50">
         <div class="wrapper wrapper--w900 d-flex justify-content-center">
-            <div class="card card-5" style="width: 40rem; height: 34rem;">
+            <div class="card card-5" style="width: 40rem; height: auto;">
                 <div class="card-body">
                     {{ form_start(form) }}
                     <div class="form-row">
@@ -569,16 +569,16 @@
                         {{ form_widget(form.levels, {'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="form-row">
-                        <label>Skills</label>
-                        {{ form(form.Skills, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.Skills) }}
                         {{ form_errors(form.Skills) }}
+                        {{ form_widget(form.Skills, {'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="form-row">
                         {{ form_label(form.profilePicture) }}
                         {{ form_errors(form.profilePicture) }}
                         {{ form_widget(form.profilePicture, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="d-flex justify-content-evenly  pt-3">
+                    <div class="d-flex justify-content-evenly pt-3">
                         <button class="btn btn-outline-secondary btn--radius-2 mr-1" type="submit">Retour</button>
                         {{ form_widget(form.save, {'attr': {'class': 'btn btn--radius-2 btn-primary'}}) }}
                     </div>

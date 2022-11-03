@@ -11,11 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-//use Symfony\Component\Form\Test\FormBuilderInterface;
-
-//Create an array with all the programming languages
-
-
 class UserType extends AbstractType
 {
 
@@ -39,13 +34,13 @@ class UserType extends AbstractType
             'Assembly' => 'Assembly',
             'Scratch' => 'Scratch',
         ];
-        $builder
 
+        $builder
             ->add('name',TextType::class)
             ->add('surname', TextType::class)
             ->add('age', IntegerType::class)
             ->add('address', TextType::class)
-            ->add('profilePicture', TextType::class)
+            ->add('profilePicture')
             ->add('levels', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
@@ -60,7 +55,9 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Create User'])
+            ->add('save', SubmitType::class , [
+                'label' => 'Create Jobs',
+            ])
         ;
     }
 
