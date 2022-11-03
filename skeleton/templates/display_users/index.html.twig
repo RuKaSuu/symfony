@@ -29,6 +29,7 @@
             <h1 class="m-5">Listes des Chercheurs d'emplois</h1>
 
             <div class="container text-center">
+                {% if users %}
                 <div class="row">
                     {% for user in users %}
                         <div class="col mb-5">
@@ -48,9 +49,9 @@
                                             <h6 class="card-subtitle mb-2 text-muted">{{ user.age }} ans</h6>
                                             <hr>
                                             <p>
-                                                BAC+{{ user.levels }} <br>
+                                                BAC+{{ user.levels }} <br> |
                                                 {% for skill in user.skills %}
-                                                    {{ skill }}
+                                                    {{ skill }} |
                                                 {% endfor %}
                                             </p>
                                         </div>
@@ -60,6 +61,9 @@
                         </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                    <h1 class="m-5">Aucun utilisateur trouvé</h1>
+                {% endif %}
             </div>
         </div>
     </div>
