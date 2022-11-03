@@ -3,48 +3,62 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper { display:flex; justify-content: center; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello UserController! ✅</h1>
-
-    This friendly message is coming from:
+    <h1>Create User</h1>
+</div>
 {#    Render the form in UserController#}
 
 {#    {{ form_start(form) }}#}
 {#    {{ form_widget(form) }}#}
 {#    {{ form_end(form) }}#}
-
-    {{ form_start(form) }}
-    <div class="my-custom-class-for-errors">
-        {{ form_errors(form) }}
-    </div>
-
-    <div class="row">
-        <div class="col-6">
-            {{ form_row(form.name) }}
+        <div class="page-wrapper bg-dark p-t-100 p-b-50">
+            <div class="wrapper wrapper--w900">
+                {{ form_start(form) }}
+                <div class="card card-6">
+                    <div class="card-heading">
+                        <h2 class="title">Apply for job</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="name">First name</div>
+                                <div class="value">
+                                {{ form_row(form.name) }}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                {{ form_row(form.surname) }}
+                            </div>
+                            <div class="form-row">
+                                {{ form_row(form.age) }}
+                            </div>
+                            <div class="form-row">
+                                {{ form_row(form.address) }}
+                            </div>
+                            <div class="form-row">
+                                {{ form_row(form.levels) }}
+                            <div class="form-row">
+                                    <div class="input-group js-input-file">
+                                        <label class="label--file" for="file">Copypast url img</label>
+                                        <input class="input-file"  type="text" image="image" id="image">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <btn class="btn-primary">
+                            {{ form_row(form.save) }}
+                        </btn>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
         </div>
-        <div class="col-6">
-            {{ form_row(form.surname) }}
-        </div>
-        <div class="col-6">
-            {{ form_row(form.age) }}
-        </div>
-        <div class="col-6">
-            {{ form_row(form.address) }}
-        </div>
-        <div class="col-6">
-            {{ form_row(form.levels) }}
-        </div>
-        <div class="col-6">
-            {{ form_row(form.save) }}
-        </div>
-    </div>
-
-
-    {{ form_end(form) }}
 
 {#    <form action="{{ controller(#}
 {#        'App\\Controller\\UserController::createUser',#}
