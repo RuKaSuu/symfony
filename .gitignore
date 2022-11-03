@@ -226,3 +226,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,intellij+all,phpstorm+all,dotenv,visualstudiocode,windows
 skeleton/.env
+*.xml
+*.iml
