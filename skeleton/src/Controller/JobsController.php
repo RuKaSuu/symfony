@@ -63,6 +63,7 @@ class JobsController extends AbstractController
         ];
 
         $form = $this->createFormBuilder()
+            ->add('jobName', TextType::class)
             ->add('jobCreator', TextType::class)
             ->add('jobDegree', TextType::class)
             ->add('jobDescription', TextType::class)
@@ -81,6 +82,7 @@ class JobsController extends AbstractController
             $data = $form->getData();
             $entityManager = $doctrine->getManager();
             $job = new Jobs();
+            $job->setJobName($data['jobName']);
             $job->setJobCreator($data['jobCreator']);
             $job->setJobPostDate(new \DateTime());
             $job->setJobDegree($data['jobDegree']);
