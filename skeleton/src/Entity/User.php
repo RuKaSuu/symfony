@@ -29,8 +29,11 @@ class User
     #[ORM\Column(length: 50)]
     private ?string $levels = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $Skills = [];
+
+
+
 
     public function getId(): ?int
     {
@@ -108,4 +111,8 @@ class User
 
         return $this;
     }
+
+
+
+
 }
