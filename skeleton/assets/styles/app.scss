@@ -1,6 +1,11 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
-    background-color: lightgray;
+    background: url("https://cdn.wallpapersafari.com/72/41/NmPIY6.jpg")  fixed center/cover;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
+
+
