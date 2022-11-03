@@ -3,31 +3,62 @@
 {% block title %}Hello DisplayUsersController!{% endblock %}
 
 {% block body %}
-    <div class="text-center d-flex justify-content-center align-items-center h-75">
-        <div class="text-center d-flex flex-column justify-content-center align-items-center w-50 ">
-            <h1 class="mb-5">Listes des Chercheurs d'emplois</h1>
+
+    <style>
+
+        .testimonial-card .card-up {
+            height: 80px;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+        }
+
+        .aqua-gradient {
+            background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+        }
+
+        .testimonial-card .avatar {
+            width: 140px;
+            margin-top: -75px;
+        }
+
+    </style>
+
+    <div class="text-center d-flex justify-content-center align-items-center">
+        <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
+
+            <h1 class="m-5">Listes des Chercheurs d'emplois</h1>
 
             <div class="container text-center">
                 <div class="row">
-
                     {% for user in users %}
                         <div class="col mb-5">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    {% if user.profilePicture == "" %}
-                                        <img class="rounded-circle w-25 h-25" src="https://static.thenounproject.com/png/363633-200.png" alt="">
-                                    {% else %}
-                                        <img class="rounded-circle w-50 h-50" src="${{ user.profilePicture }}" alt="">
-                                    {% endif %}
-                                    <h5 class="card-title">{{ user.name }} {{ user.surname }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ user.age }} ans</h6>
-                                    <p class="card-text text-muted">{{ user.address }}</p>
-                                    <p class="card-text text-muted">BAC+{{ user.levels }}</p>
-                                </div>
+                            <div class="container">
+                                <section class="mx-auto my-5" style="width: 18rem;">
+                                    <div class="card testimonial-card mt-2 mb-3">
+                                        <div class="card-up aqua-gradient"></div>
+                                        <div class="avatar mx-auto white">
+                                            {% if user.profilePicture == "" %}
+                                                <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
+                                            {% else %}
+                                                <img class="rounded-circle w-50 h-50" src="{{ user.profilePicture }}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title font-weight-bold">{{ user.name }} {{ user.surname }}</h4>
+                                            <h6 class="card-subtitle mb-2 text-muted">{{ user.age }} ans</h6>
+                                            <hr>
+                                            <p>
+                                                BAC+{{ user.levels }} <br>
+                                                {% for skill in user.skills %}
+                                                    {{ skill }}
+                                                {% endfor %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
             </div>
         </div>
