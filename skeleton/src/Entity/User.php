@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -27,6 +28,9 @@ class User
 
     #[ORM\Column(length: 50)]
     private ?string $levels = null;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $Skills = [];
 
     public function getId(): ?int
     {
@@ -89,6 +93,18 @@ class User
     public function setLevels(string $levels): self
     {
         $this->levels = $levels;
+
+        return $this;
+    }
+
+    public function getSkills(): array
+    {
+        return $this->Skills;
+    }
+
+    public function setSkills(?array $Skills): self
+    {
+        $this->Skills = $Skills;
 
         return $this;
     }
