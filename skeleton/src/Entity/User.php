@@ -32,8 +32,12 @@ class User
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $profilePicture = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+//    #[ORM\Column(type: "json")]
+//    private array $Skills = [];
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $Skills = [];
+
 
     public function getId(): ?int
     {
@@ -108,6 +112,9 @@ class User
     public function setProfilePicture(?string $profilePicture): self
     {
         $this->profilePicture = $profilePicture;
+
+        return $this;
+    }
 
     public function getSkills(): array
     {
