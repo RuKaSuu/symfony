@@ -18,26 +18,26 @@ use Doctrine\ORM\Query;
 
 class JobsController extends AbstractController
 {
-    #[Route('/jobCreate', name: 'jobs_create')]
-    public function createJob(ManagerRegistry $doctrine): Response
-    {
-        $entityManager = $doctrine->getManager();
+//    #[Route('/jobCreate', name: 'jobs_create')]
+//    public function createJob(ManagerRegistry $doctrine): Response
+//    {
+//        $entityManager = $doctrine->getManager();
 
-        $job = new Jobs();
-        $job->setJobTitle('React Native|JS Developer');
-        $job->setJobDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-        $job->setJobCreator('Mark Zuckerberg');
-        $job->setJobLocation('London');
-        $job->setJobDegree('Master 1');
-        $job->setJobPostDate(new \DateTime());
+//        $job = new Jobs();
+//        $job->setJobTitle('React Native|JS Developer');
+//        $job->setJobDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
+//        $job->setJobCreator('Mark Zuckerberg');
+//        $job->setJobLocation('London');
+//        $job->setJobDegree('Master 1');
+//        $job->setJobPostDate(new \DateTime());
 
 
-        $entityManager->persist($job);
-        $entityManager->flush();
+//        $entityManager->persist($job);
+//        $entityManager->flush();
 
-        return new Response('Saved new job with id ' . $job->getId());
+//        return new Response('Saved new job with id ' . $job->getId());
 
-    }
+//    }
 
     #[Route('/jobs', name: 'jobs_form')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
@@ -87,7 +87,7 @@ class JobsController extends AbstractController
             $job->setJobDescription($data['jobDescription']);
             $job->setJobTitle($data['jobTitle']);
             $job->setJobLocation($data['jobLocation']);
-            $job->setJobSkills($data['Skills']);
+//            $job->setJobSkills($data['Skills']);
             $entityManager->persist($job);
             $entityManager->flush();
 
