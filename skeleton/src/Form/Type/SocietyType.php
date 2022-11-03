@@ -25,8 +25,8 @@ class SocietyType extends AbstractType
 
             ->add('compagnyName',TextType::class)
             ->add('compagnyPicture')
-            ->add('location', TextType::class)
-            ->add('websiteLink', TextType::class)
+            ->add('location')
+            ->add('websiteLink')
             ->add('save', SubmitType::class, ['label' => 'Create Society'])
         ;
     }

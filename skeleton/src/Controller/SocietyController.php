@@ -33,7 +33,8 @@ class SocietyController extends AbstractController
             $entityManager->persist($society);
             $entityManager->flush();
 
-//            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('society_render');
+
         }
 
         return $this->renderForm('society/index.html.twig', [

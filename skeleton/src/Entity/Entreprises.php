@@ -22,7 +22,7 @@ class Entreprises
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $location = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(length: 500, nullable: true)]
     private ?string $websiteLink = null;
 
     public function getId(): ?int

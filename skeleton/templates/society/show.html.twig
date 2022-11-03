@@ -44,22 +44,26 @@
                                         <div class="card testimonial-card mt-2 mb-3">
                                             <div class="card-up aqua-gradient"></div>
                                             <div class="avatar mx-auto white">
-{#                                                {% if society.compagny_picture == "" %}#}
+                                                {% if society.compagnyPicture == "" %}
                                                     <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
-{#                                                {% else %}#}
-{#                                                    <img class="rounded-circle w-50 h-50" src="{{ society.compagny_picture }}" alt="">#}
-{#                                                {% endif %}#}
+                                                {% else %}
+                                                    <img class="rounded-circle w-50 h-50" src="{{ society.compagnyPicture }}" alt="">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body text-center">
                                                 <h4 class="card-title font-weight-bold">{{ society.compagnyName }}</h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">{{ society.location }}</h6>
+                                                {% if society.location == "" %}
+                                                    <h6 class="card-subtitle mb-2 text-muted">Pas d'adresse renseignée</h6>
+                                                {% else %}
+                                                    <h6 class="card-subtitle mb-2 text-muted">{{ society.location }}</h6>
+                                                {% endif %}
+
                                                 <hr>
-                                                <p class="card-subtitle">
-                                                    {{ society.websiteLink }}
-                                                </p>
-                                                {% for skill in society.skills %}
-                                                    <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>
-                                                {% endfor %}
+                                                {% if society.websiteLink == "" %}
+                                                    <p>Pas de lien disponible</p>
+                                                {% else %}
+                                                    <a class="text-decoration-none" href="{{ society.websiteLink }}" target="_blank">Website</a>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </section>
