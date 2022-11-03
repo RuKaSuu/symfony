@@ -11,42 +11,14 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Jobs</h1>
+    <h1>Create a new job offer 💼</h1>
 
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary w-100" formnovalidate>Send</button>
+    <button type="submit" class="btn btn-primary w-100" formnovalidate>Confirm</button>
     {{ form_end(form) }}
 
-{#    <table class="table">#}
-{#        <thead>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <th>Title</th>#}
-{#                <th>Description</th>#}
-{#                <th>Location</th>#}
-{#                <th>Create At</th>#}
-{#                <th>Minimum Degree</th>#}
-{#            </tr>#}
-{#        </thead>#}
-{#        <tbody class="tbody">#}
-{#        {% for job in jobs %}#}
-{#            <tr>#}
-{#                <td>{{ job.id }}</td>#}
-{#                <td>{{ job.jobTitle }}</td>#}
-{#                <td>{{ job.jobDescription }}</td>#}
-{#                <td>{{ job.jobLocation }}</td>#}
-{#                <td>{{ job.jobPostDate ? job.jobPostDate|date('d-m-Y') : '' }}</td>#}
-{#                <td>{{ job.jobDegree }}</td>#}
-{#              #}
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan=\"18\">no records found</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{#        </tbody>#}
 
 </div>
 {% endblock %}
