@@ -51,8 +51,8 @@ class JobsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $entityManager = $doctrine->getManager();
-            $data->setJobPostDate(new \DateTime());
-            $data->setJobTitle($data->getJobName());
+            $data->setPostDate(new \DateTime());
+            $data->setTitle($data->getName());
             $entityManager->persist($data);
             $entityManager->flush();
 
