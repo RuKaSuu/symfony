@@ -539,14 +539,9 @@
                 <div class="card-body">
                     {{ form_start(form) }}
                     <div class="form-row">
-                        {{ form_label(form.Name) }}
-                        {{ form_errors(form.Name) }}
-                        {{ form_widget(form.Name, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    <div class="form-row">
-                        {{ form_label(form.Creator) }}
-                        {{ form_errors(form.Creator) }}
-                        {{ form_widget(form.Creator, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.companyName) }}
+                        {{ form_errors(form.companyName) }}
+                        {{ form_widget(form.companyName, {'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="form-row">
                         {{ form_label(form.Degree) }}

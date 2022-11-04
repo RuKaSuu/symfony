@@ -19,26 +19,6 @@ use Doctrine\ORM\Query;
 
 class JobsController extends AbstractController
 {
-//    #[Route('/jobCreate', name: 'jobs_create')]
-//    public function createJob(ManagerRegistry $doctrine): Response
-//    {
-//        $entityManager = $doctrine->getManager();
-
-//        $job = new Jobs();
-//        $job->setJobTitle('React Native|JS Developer');
-//        $job->setJobDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-//        $job->setJobCreator('Mark Zuckerberg');
-//        $job->setJobLocation('London');
-//        $job->setJobDegree('Master 1');
-//        $job->setJobPostDate(new \DateTime());
-
-
-//        $entityManager->persist($job);
-//        $entityManager->flush();
-
-//        return new Response('Saved new job with id ' . $job->getId());
-
-//    }
 
     #[Route('/jobs', name: 'jobs_form')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
@@ -60,14 +40,12 @@ class JobsController extends AbstractController
 
             return $this->redirectToRoute('jobs_render');
 
-//            dd($data);
         }
 
         return $this->render('jobs/index.html.twig', [
             'controller_name' => 'JobsController',
             'form' => $form->createView(),
         ]);
-
 
     }
 
@@ -77,33 +55,10 @@ class JobsController extends AbstractController
     {
         $jobRepository = $doctrine->getRepository(Jobs::class)->findAll();
 
-
         return $this->render('jobs/show.html.twig', [
             'jobs' => $jobRepository,
-//            'users' => $userRepository,
         ]);
 
     }
-
-
-//    job delete
-    #[Route('/jobDelete/{id}', name: 'job_delete')]
-    public function deleteJob(ManagerRegistry $doctrine, $id): Response
-    {
-        $entityManager = $doctrine->getManager();
-        $job = $entityManager->getRepository(Jobs::class)->find($id);
-
-        if (!$job) {
-            throw $this->createNotFoundException(
-                'No job found for id ' . $id
-            );
-        }
-
-        $entityManager->remove($job);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('jobs_render');
-    }
-
 
 }
