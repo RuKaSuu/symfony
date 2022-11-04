@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Company;
 use App\Entity\Jobs;
 use App\Entity\User;
 use App\Form\Type\JobsType;
@@ -24,8 +25,18 @@ class JobsController extends AbstractController
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
+        //get all companies
+        $companies = $doctrine->getRepository(Company::class)->findAll();
+
+        $companiesName = [];
+        foreach ($companies as $company) {
+            $companiesName[$company->getName()] = $company->getId();
+        }
+
         $job = new Jobs();
-        $form = $this->createForm(JobsType::class, $job);
+        $form = $this->createForm(JobsType::class, $job, [
+            'empty_data' => $companiesName
+        ]);
 
         $form->handleRequest($request);
 
@@ -33,7 +44,6 @@ class JobsController extends AbstractController
             $data = $form->getData();
             $entityManager = $doctrine->getManager();
             $data->setPostDate(new \DateTime());
-            $data->setTitle($data->getName());
             $entityManager->persist($data);
 
             $entityManager->flush();
