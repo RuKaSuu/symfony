@@ -34,7 +34,7 @@ class Jobs
     private array $skills = [];
 
     #[ORM\ManyToOne(inversedBy: 'jobs')]
-    private ?company $company = null;
+    private ?Company $company = null;
 
     public function getId(): ?int
     {

@@ -3,7 +3,9 @@
 namespace App\Form\Type;
 
 use App\Entity\Jobs;
+use App\Repository\CompanyRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class JobsType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options) : void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
         $skills = [
@@ -38,7 +40,16 @@ class JobsType extends AbstractType
             'Scratch' => 'Scratch',
         ];
 
+
         $builder
+            ->add('company', EntityType::class, [
+                'class' => 'App\Entity\Company',
+                'query_builder' => function (CompanyRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
+            ])
+            ->add('Title', TextType::class)
             ->add('Degree', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
@@ -56,13 +67,12 @@ class JobsType extends AbstractType
             ])
             ->add('Location', TextType::class)
 //            ->add('jobPicture', TextType::class)
-            ->add('save', SubmitType::class , [
+            ->add('save', SubmitType::class, [
                 'label' => 'Create Jobs',
-            ])
-        ;
+            ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver) : void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Jobs::class,
