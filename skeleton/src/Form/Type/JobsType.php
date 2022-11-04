@@ -47,12 +47,12 @@ class JobsType extends AbstractType
                 ],
             ])
             ->add('jobDescription', TextType::class)
-//            ->add('jobSkills', ChoiceType::class, [
-//                'choices' => $skills,
-//                'multiple' => true,
-//            ])
+            ->add('Skills', ChoiceType::class, [
+                'choices' => $skills,
+                'multiple' => true,
+                'expanded' => true,
+            ])
             ->add('jobLocation', TextType::class)
-//            ->add('jobPicture', TextType::class)
             ->add('save', SubmitType::class , [
                 'label' => 'Post',
             ])

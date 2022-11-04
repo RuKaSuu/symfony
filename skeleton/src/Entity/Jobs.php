@@ -35,6 +35,9 @@ class Jobs
     #[ORM\Column(length: 255)]
     private ?string $jobLocation = null;
 
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
+    private array $skills = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Jobs
     public function setJobLocation(string $jobLocation): self
     {
         $this->jobLocation = $jobLocation;
+
+        return $this;
+    }
+
+    public function getSkills(): array
+    {
+        return $this->skills;
+    }
+
+    public function setSkills(?array $skills): self
+    {
+        $this->skills = $skills;
 
         return $this;
     }
