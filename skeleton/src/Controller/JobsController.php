@@ -72,11 +72,11 @@ class JobsController extends AbstractController
            $arr = $jobRepository[$i]->getJobSkills();
        }
 
-       dd($arr);
+//       dd($arr);
 
        return $this->render('jobs/show.html.twig', [
            'jobs' => $jobRepository,
-           'users' => $userRepository,
+//           'users' => $userRepository,
        ]);
 
    }

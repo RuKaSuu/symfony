@@ -39,11 +39,11 @@
                     {% for match in jobsMatches[user.id] %}
                         <tr>
                             <td>{{ match.id }}</td>
-                            <td>{{ match.jobName }}</td>
-                            <td>{{ match.jobDescription }}</td>
-                            <td>{{ match.jobLocation }}</td>
-                            <td>{{ match.jobPostDate|date('d/m/Y') }}</td>
-                            <td>{{ match.jobDegree }}</td>
+                            <td>{{ match.title }}</td>
+                            <td>{{ match.description }}</td>
+                            <td>{{ match.location }}</td>
+                            <td>{{ match.postDate|date('d/m/Y') }}</td>
+                            <td>{{ match.degree }}</td>
                             {% for skill in match.skills %}
                                 <td>{{ skill }}</td>
                             {% endfor %}
