@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class JobsCompanyController extends AbstractController
 {
-    #[Route('/jobs/company/{id}', name: 'app_jobs_company')]
+    #[Route('/company/{id}', name: 'app_jobs_company')]
     public function readJob(Request $request, ManagerRegistry $doctrine): Response
     {
 

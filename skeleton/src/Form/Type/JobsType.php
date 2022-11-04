@@ -49,8 +49,8 @@ class JobsType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
             ])
-            ->add('Title', TextType::class)
-            ->add('Degree', ChoiceType ::class, [
+            ->add('title', TextType::class)
+            ->add('degree', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
                     'Bac+2' => '2',
@@ -59,16 +59,16 @@ class JobsType extends AbstractType
                     'Bac+5' => '5',
                 ],
             ])
-            ->add('Description', TextType::class)
-            ->add('Skills', ChoiceType::class, [
+            ->add('description', TextType::class)
+            ->add('skills', ChoiceType::class, [
                 'choices' => $skills,
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('Location', TextType::class)
+            ->add('location', TextType::class)
 //            ->add('jobPicture', TextType::class)
             ->add('save', SubmitType::class, [
-                'label' => 'Create Jobs',
+                'label' => 'Créer Offre',
             ]);
     }
 

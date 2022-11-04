@@ -16,19 +16,19 @@ class Jobs
 
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $PostDate = null;
+    private ?\DateTimeInterface $postDate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Degree = null;
+    private ?string $degree = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $Description = null;
+    private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Title = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Location = null;
+    private ?string $location = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $skills = [];
@@ -46,60 +46,60 @@ class Jobs
 
     public function getPostDate(): ?\DateTimeInterface
     {
-        return $this->PostDate;
+        return $this->postDate;
     }
 
-    public function setPostDate(\DateTimeInterface $PostDate): self
+    public function setPostDate(\DateTimeInterface $postDate): self
     {
-        $this->PostDate = $PostDate;
+        $this->postDate = $postDate;
 
         return $this;
     }
 
     public function getDegree(): ?string
     {
-        return $this->Degree;
+        return $this->degree;
     }
 
-    public function setDegree(?string $Degree): self
+    public function setDegree(?string $degree): self
     {
-        $this->Degree = $Degree;
+        $this->degree = $degree;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): self
+    public function setDescription(string $description): self
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): self
+    public function setTitle(string $title): self
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
 
     public function getLocation(): ?string
     {
-        return $this->Location;
+        return $this->location;
     }
 
-    public function setLocation(string $Location): self
+    public function setLocation(string $location): self
     {
-        $this->Location = $Location;
+        $this->location = $location;
 
         return $this;
     }

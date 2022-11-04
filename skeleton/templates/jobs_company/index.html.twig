@@ -37,17 +37,17 @@
                 {% if jobsCompany %}
                     <div class="row">
                         {% for jobCompany in jobsCompany %}
-                            <div class="col mb-5">
+                            <div class="col">
                                 <div class="container">
                                     <section class="mx-auto my-5" style="width: 18rem;">
                                         <div class="card testimonial-card mt-2 mb-3">
                                             <div class="card-up aqua-gradient"></div>
                                             <div class="avatar mx-auto white">
-                                                {#                                                {% if job.profilePicture == "" %}#}
-                                                <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
-                                                {#                                                {% else %}#}
-                                                {#                                                    <img class="rounded-circle w-50 h-50" src="{{ job.profilePicture }}" alt="">#}
-                                                {#                                                {% endif %}#}
+                                                {% if jobCompany.company.picture == "" %}
+                                                    <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
+                                                {% else %}
+                                                    <img class="rounded-circle w-50 h-50" src="{{ jobCompany.company.picture }}" alt="">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body text-center">
                                                 <h4 class="card-title font-weight-bold">{{ jobCompany.company.name }}</h4>
@@ -67,7 +67,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <h1 class="m-5">Aucun utilisateur trouvé</h1>
+                    <h1 class="m-5">Aucune offre trouvée</h1>
                 {% endif %}
             </div>
         </div>

@@ -29,13 +29,13 @@ class User
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $Surname = null;
+    private ?string $surname = null;
 
     #[ORM\Column]
-    private ?int $Age = null;
+    private ?int $age = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Address = null;
+    private ?string $address = null;
 
     #[ORM\Column(length: 50)]
     private ?string $levels = null;
@@ -44,7 +44,7 @@ class User
     private ?string $profilePicture = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private array $Skills = [];
+    private array $skills = [];
 
     public function getId(): ?int
     {
@@ -65,36 +65,36 @@ class User
 
     public function getAddress(): ?string
     {
-        return $this->Address;
+        return $this->address;
     }
 
-    public function setAddress(string $Address): self
+    public function setAddress(string $address): self
     {
-        $this->Address = $Address;
+        $this->address = $address;
 
         return $this;
     }
 
     public function getSurname(): ?string
     {
-        return $this->Surname;
+        return $this->surname;
     }
 
-    public function setSurname(string $Surname): self
+    public function setSurname(string $surname): self
     {
-        $this->Surname = $Surname;
+        $this->surname = $surname;
 
         return $this;
     }
 
     public function getAge(): ?int
     {
-        return $this->Age;
+        return $this->age;
     }
 
-    public function setAge(int $Age): self
+    public function setAge(int $age): self
     {
-        $this->Age = $Age;
+        $this->age = $age;
 
         return $this;
     }
@@ -125,12 +125,12 @@ class User
 
     public function getSkills(): array
     {
-        return $this->Skills;
+        return $this->skills;
     }
 
-    public function setSkills(?array $Skills): self
+    public function setSkills(?array $skills): self
     {
-        $this->Skills = $Skills;
+        $this->skills = $skills;
 
         return $this;
     }

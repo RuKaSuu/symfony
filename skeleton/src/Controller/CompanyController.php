@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CompanyController extends AbstractController
 {
-    #[Route('/company', name: 'app_company')]
+    #[Route('/company/create', name: 'app_company')]
     public function createCompanyForm(ManagerRegistry $doctrine ,Request $request): Response
     {
         $baseCompany = new Company();
@@ -41,7 +41,7 @@ class CompanyController extends AbstractController
         ]);
     }
 
-    #[Route('/companyRender', name: 'company_render')]
+    #[Route('/companies', name: 'company_render')]
     public function readCompany(Request $request, ManagerRegistry $doctrine): Response
     {
         $companies = $doctrine->getRepository(Company::class)->findAll();

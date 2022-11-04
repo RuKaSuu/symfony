@@ -50,13 +50,13 @@ class UserType extends AbstractType
                     'Bac+5' => '5',
                 ],
             ])
-            ->add('Skills', ChoiceType::class, [
+            ->add('skills', ChoiceType::class, [
                 'choices' => $skills,
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('save', SubmitType::class , [
-                'label' => 'Create Jobs',
+                'label' => 'Créer Profil',
             ])
         ;
     }

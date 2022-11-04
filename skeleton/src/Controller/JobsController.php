@@ -23,7 +23,7 @@ use Doctrine\ORM\Query;
 class JobsController extends AbstractController
 {
 
-    #[Route('/jobs', name: 'jobs_form')]
+    #[Route('/job/create', name: 'jobs_form')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
@@ -63,7 +63,7 @@ class JobsController extends AbstractController
     
 
 
-   #[Route('/jobsRender', name: 'jobs_render')]
+   #[Route('/jobs', name: 'jobs_render')]
    public function readJob(Request $request, ManagerRegistry $doctrine): Response
    {
        $jobRepository = $doctrine->getRepository(Jobs::class)->findAll();

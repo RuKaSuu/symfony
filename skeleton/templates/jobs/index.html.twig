@@ -538,38 +538,37 @@
             <div class="card card-5 mb-5" style="width: 40rem; height: auto;">
                 <div class="card-body">
                     {{ form_start(form) }}
-                    <div class="form-row">
-                        {{ form_label(form.company) }}
+                    <div class="form-row mb-3">
+                        <label>Entreprise</label>
                         {{ form_errors(form.company) }}
                         {{ form_widget(form.company, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-row">
-                        {{ form_label(form.Title) }}
-                        {{ form_errors(form.Title) }}
-                        {{ form_widget(form.Title, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-row mb-3">
+                        <label>Titre de l'offre</label>
+                        {{ form_errors(form.title) }}
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-row">
-                        {{ form_label(form.Degree) }}
-                        {{ form_errors(form.Degree) }}
-                        {{ form_widget(form.Degree, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-row mb-3">
+                        <label>Niveau demandé</label>
+                        {{ form_errors(form.degree) }}
+                        {{ form_widget(form.degree, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-row">
-                        {{ form_label(form.Description) }}
-                        {{ form_errors(form.Description) }}
-                        {{ form_widget(form.Description, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-row mb-3">
+                        <label>Description de l'offre</label>
+                        {{ form_errors(form.description) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-row">
-                        {{ form_label(form.Skills) }}
-                        {{ form_errors(form.Skills) }}
-                        {{ form_widget(form.Skills, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-row mb-3">
+                        <label>Compétences requises</label>
+                        {{ form_errors(form.skills) }}
+                        {{ form_widget(form.skills, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-row">
-                        {{ form_label(form.Location) }}
-                        {{ form_errors(form.Location) }}
-                        {{ form_widget(form.Location, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-row mb-3">
+                        <label>Adresse</label>
+                        {{ form_errors(form.location) }}
+                        {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="d-flex justify-content-evenly  pt-3">
-                        <button class="btn btn-outline-secondary btn--radius-2 mr-1" type="submit">Retour</button>
                         {{ form_widget(form.save, {'attr': {'class': 'btn btn--radius-2 btn-primary'}}) }}
                     </div>
                     {{ form_end(form) }}

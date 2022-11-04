@@ -49,7 +49,7 @@ class UserController extends AbstractController
         return new Response('Saved new user named :  '.$baseUser->getName());
     }
 
-    #[Route('/user', name: 'app_user')]
+    #[Route('/user/create', name: 'app_user')]
     public function createUserForm(ManagerRegistry $doctrine ,Request $request): Response
     {
         $baseUser = new User();
@@ -78,7 +78,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/userRender', name: 'user_render')]
+    #[Route('/users', name: 'user_render')]
     public function index(ManagerRegistry $doctrine): Response
     {
 

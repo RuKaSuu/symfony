@@ -27,7 +27,7 @@ class CompanyType extends AbstractType
             ->add('picture')
             ->add('address')
             ->add('websiteLink')
-            ->add('save', SubmitType::class, ['label' => 'Create Society'])
+            ->add('save', SubmitType::class, ['label' => 'Créer Entreprise'])
         ;
     }
 
