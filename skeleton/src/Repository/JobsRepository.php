@@ -39,41 +39,6 @@ class JobsRepository extends ServiceEntityRepository
         }
     }
 
-    public function orderBy()
-    {
-        return $this->createQueryBuilder('j')
-            ->orderBy('j.jobDegree', 'DESC')
-            ->getQuery()
-            ->getResult();
-
-    }
-
-    public function orderByMatch($jobSkill, $userSkill)
-    {
-        return $this->createQueryBuilder('j')
-            ->setParameters(['jobSkills' => $jobSkill, 'userSkills' => $userSkill])
-            ->where('j.jobSkills = :jobSkills')
-            ->andWhere('j.jobSkills = :userSkills')
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function orderBySkill($jobSkill)
-    {
-        return $this->createQueryBuilder('j')
-            ->setParameters(['jobSkills' => $jobSkill])
-            ->where('j.jobSkills = :jobSkills')
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function getJobsSkills()
-    {
-        return $this->createQueryBuilder('j')
-            ->select('j.jobSkills')
-            ->getQuery()
-            ->getResult();
-    }
 
 //    /**
 //     * @return Jobs[] Returns an array of Jobs objects
