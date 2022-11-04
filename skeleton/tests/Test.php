@@ -1,10 +1,11 @@
 <?php
 namespace App\Tests;
 
-use App\Entity\Entreprises;
+use App\Entity\Company;
+
 use App\Entity\Jobs;
 use App\Entity\User;
-use App\Repository\EntreprisesRepository;
+use App\Repository\CompanyRepository;
 use App\Repository\JobsRepository;
 use App\Repository\UserRepository;
 use PHPUnit\Framework\TestCase;
@@ -32,17 +33,13 @@ class Test extends TestCase
     public function testJobs()
     {
         $job = new Jobs();
-        $job->setName('Développeur Web');
         $job->setTitle('React Native|JS Developer');
         $job->setDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-        $job->setCreator('Mark Zuckerberg');
         $job->setLocation('London');
         $job->setDegree('Master 1');
 
-        $this->assertSame('Développeur Web', $job->getName());
         $this->assertSame('React Native|JS Developer', $job->getTitle());
         $this->assertSame('React Native or JS Developer for a web application to a mobile application with a 6 months contract', $job->getDescription());
-        $this->assertSame('Mark Zuckerberg', $job->getCreator());
         $this->assertSame('London', $job->getLocation());
         $this->assertSame('Master 1', $job->getDegree());
     }
@@ -69,13 +66,18 @@ class Test extends TestCase
 
     public function testJobsCreation()
     {
+        $society = new Company();
+        $society->setName('Facebook');
+        $society->setPicture('https://www.facebook.com/images/fb_icon_325x325.png');
+        $society->setAddress('London');
+        $society->setWebsiteLink('https://www.facebook.com/');
+
         $job = new Jobs();
-        $job->setName('Développeur Web');
         $job->setTitle('React Native|JS Developer');
         $job->setDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-        $job->setCreator('Mark Zuckerberg');
         $job->setPostDate(new \DateTime());
         $job->setLocation('London');
+        $job->setCompany($society);
         $job->setDegree('Master 1');
 
         $jobRepository = $this->createMock(JobsRepository::class);
@@ -90,13 +92,13 @@ class Test extends TestCase
 
     public function testCompanyCreation()
     {
-        $company = new Entreprises();
-        $company->setCompagnyName('Google');
-        $company->setCompagnyPicture('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png');
-        $company->setLocation('London');
+        $company = new Company();
+        $company->setName('Google');
+        $company->setPicture('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png');
+        $company->setAddress('London');
         $company->setWebsiteLink('https://www.google.com/');
 
-        $companyRepository = $this->createMock(EntreprisesRepository::class);
+        $companyRepository = $this->createMock(CompanyRepository::class);
 
         $companyRepository->expects($this->once())
             ->method('save')

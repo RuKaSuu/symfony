@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Company;
 use App\Entity\Entreprises;
 use App\Entity\Jobs;
 use App\Entity\User;
@@ -32,37 +33,38 @@ class AppFixtures extends Fixture
         $user2->setSkills(['PHP', 'Symfony', 'ReactJS', 'CSS', 'JS']);
 
 
+        $society = new Company();
+        $society->setName('Facebook');
+        $society->setPicture('https://www.facebook.com/images/fb_icon_325x325.png');
+        $society->setAddress('London');
+        $society->setWebsiteLink('https://www.facebook.com/');
+
+        $society2 = new Company();
+        $society2->setName('Microsoft');
+        $society2->setPicture('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/1910px-Microsoft_logo_-_2012_%28vertical%29.svg.png');
+        $society2->setAddress('Paris');
+        $society2->setWebsiteLink('https://www.microsoft.com/fr-fr/');
+
+
         $jobs = new Jobs();
-        $jobs->setName('Développeur Web');
         $jobs->setTitle('React Native|JS Developer');
         $jobs->setDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-        $jobs->setCreator('Mark Zuckerberg');
         $jobs->setLocation('London');
         $jobs->setDegree('Master 1');
         $jobs->setSkills(['PHP', 'Symfony', 'HTML', 'CSS', 'JS', 'SQL']);
+        $jobs->setCompany($society);
         $jobs->setPostDate(new \DateTime());
 
         $jobs2 = new Jobs();
-        $jobs2->setName('Développeur Frontend');
         $jobs2->setTitle('JS Developer');
         $jobs2->setDescription('JS Developer for a web application with a 1 year contract');
-        $jobs2->setCreator('Bill Gates');
         $jobs2->setLocation('Paris');
         $jobs2->setDegree('Master 2');
         $jobs2->setSkills(['PHP', 'Symfony', 'ReactJS', 'CSS', 'JS']);
+        $jobs2->setCompany($society2);
         $jobs2->setPostDate(new \DateTime());
 
-        $society = new Entreprises();
-        $society->setCompagnyName('Facebook');
-        $society->setCompagnyPicture('https://www.facebook.com/images/fb_icon_325x325.png');
-        $society->setLocation('London');
-        $society->setWebsiteLink('https://www.facebook.com/');
 
-        $society2 = new Entreprises();
-        $society2->setCompagnyName('Microsoft');
-        $society2->setCompagnyPicture('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/1910px-Microsoft_logo_-_2012_%28vertical%29.svg.png');
-        $society2->setLocation('Paris');
-        $society2->setWebsiteLink('https://www.microsoft.com/fr-fr/');
 
 
         $manager->persist($user);
