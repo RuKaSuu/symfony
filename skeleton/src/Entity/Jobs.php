@@ -38,6 +38,9 @@ class Jobs
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $skills = [];
 
+    #[ORM\ManyToOne(inversedBy: 'jobs')]
+    private ?company $company = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,4 +141,17 @@ class Jobs
 
         return $this;
     }
+
+    public function getCompany(): ?company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?company $company): self
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
 }
