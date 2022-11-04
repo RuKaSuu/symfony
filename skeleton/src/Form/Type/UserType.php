@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UserType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options) : void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $skills = [
             'PHP' => 'PHP',
@@ -40,12 +40,16 @@ class UserType extends AbstractType
             'Scratch' => 'Scratch',
         ];
         $builder
-
-            ->add('name',TextType::class)
+            ->add('name', TextType::class)
             ->add('surname', TextType::class)
             ->add('age', IntegerType::class)
             ->add('address', TextType::class)
             ->add('profilePicture', TextType::class)
+            ->add('skills', ChoiceType::class, [
+                'choices' => $skills,
+                'multiple' => true,
+                'expanded' => true,
+            ])
             ->add('levels', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
@@ -55,16 +59,10 @@ class UserType extends AbstractType
                     'Bac+5' => '5',
                 ],
             ])
-            ->add('Skills', ChoiceType::class, [
-                'choices' => $skills,
-                'multiple' => true,
-                'expanded' => true,
-            ])
-            ->add('save', SubmitType::class, ['label' => 'Create User'])
-        ;
+            ->add('save', SubmitType::class, ['label' => 'Create User']);
     }
 
-    public function configureOptions(OptionsResolver $resolver) : void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,

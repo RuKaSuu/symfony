@@ -541,8 +541,8 @@
     <div class="page-wrapper p-t-100 p-b-50">
         <div class="wrapper wrapper--w900 d-flex justify-content-center">
             <div class="card card-5" style="width: 40rem; height: 34rem;">
+                {{ form_start(form) }}
                 <div class="card-body">
-                    {{ form_start(form) }}
                     <div class="form-row">
                         {{ form_label(form.name) }}
                         {{ form_errors(form.name) }}
@@ -570,8 +570,8 @@
                     </div>
                     <div class="form-row">
                         <label>Skills</label>
-                        {{ form(form.Skills, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(form.Skills) }}
+                        {{ form(form.skills, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.skills) }}
                     </div>
                     <div class="form-row">
                         {{ form_label(form.profilePicture) }}
@@ -580,9 +580,13 @@
                     </div>
                     <div class="d-flex justify-content-evenly  pt-3">
                         <button class="btn btn-outline-secondary btn--radius-2 mr-1" type="submit">Retour</button>
+                        <div class="form-error">
+                            {{ form_errors(form) }}
+                        </div>
                         {{ form_widget(form.save, {'attr': {'class': 'btn btn--radius-2 btn-primary'}}) }}
                     </div>
                     {{ form_end(form) }}
+
                 </div>
             </div>
         </div>
