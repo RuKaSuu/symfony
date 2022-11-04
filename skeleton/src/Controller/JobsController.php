@@ -69,7 +69,7 @@ class JobsController extends AbstractController
        $jobRepository = $doctrine->getRepository(Jobs::class)->findAll();
 
        for ($i = 0; $i < count($jobRepository); $i++) {
-           $arr = $jobRepository[$i]->getJobSkills();
+           $arr = $jobRepository[$i]->getSkills();
        }
 
 //       dd($arr);
@@ -102,7 +102,7 @@ class JobsController extends AbstractController
     }
 
 
-    #[Route('/jobsRenderMatch', name: 'jobs_render')]
+    #[Route('/jobsRenderMatch', name: 'jobs_render_match')]
     public function readJobMatch(ManagerRegistry $doctrine): Response
     {
 
@@ -125,7 +125,7 @@ class JobsController extends AbstractController
         }
 
 
-        return $this->render('jobs/debug.html.twig', [
+        return $this->render('jobs/match.html.twig', [
             'jobs' => $jobs,
             'users' => $users,
             'jobsMatches' => $jobsMatches,
