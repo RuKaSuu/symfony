@@ -3,11 +3,14 @@
 namespace App\Form\Type;
 
 use App\Entity\Jobs;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class JobsType extends AbstractType
@@ -15,6 +18,7 @@ class JobsType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options) : void
     {
+
         $skills = [
             'PHP' => 'PHP',
             'Java' => 'Java',
@@ -35,8 +39,6 @@ class JobsType extends AbstractType
         ];
 
         $builder
-            ->add('Name', TextType::class)
-            ->add('Creator', TextType::class)
             ->add('Degree', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',

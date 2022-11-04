@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SocietyController!{% endblock %}
+
+{% block body %}
+
+    <style>
+
+        .testimonial-card .card-up {
+            height: 80px;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+        }
+
+        .aqua-gradient {
+            background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+        }
+
+        .testimonial-card .avatar {
+            width: 140px;
+            margin-top: -75px;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
+    </style>
+
+    {% include('navbar.html.twig') %}
+
+    <div class="text-center d-flex justify-content-center align-items-center">
+        <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
+
+            <h1 class="m-5">Listes des Entreprises</h1>
+
+            <div class="container text-center">
+                {% if companies %}
+                    <div class="row">
+                        {% for company in companies %}
+                                <div class="col mb-4">
+                                    <div class="container">
+                                        <a href="{{  path('app_jobs_company', {'id' : company.id}) }}" class="text-decoration-none">
+                                        <section class="mx-auto my-5" style="width: 18rem;">
+                                            <div class="card testimonial-card mt-2 mb-3">
+                                                <div class="card-up aqua-gradient"></div>
+                                                <div class="avatar mx-auto white">
+                                                    {% if company.picture == "" %}
+                                                        <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
+                                                    {% else %}
+                                                        <img class="rounded-circle w-50 h-50" src="{{ company.picture }}" alt="">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <h4 class="card-title font-weight-bold">{{ company.name }}</h4>
+                                                    {% if company.address == "" %}
+                                                        <h6 class="card-subtitle mb-2 text-muted">Pas d'adresse renseignée</h6>
+                                                    {% else %}
+                                                        <h6 class="card-subtitle mb-2 text-muted">{{ company.address }}</h6>
+                                                    {% endif %}
+
+                                                    <hr>
+                                                    {% if company.websiteLink == "" %}
+                                                        <p>Pas de lien disponible</p>
+                                                    {% else %}
+                                                        <a class="text-decoration-none" href="{{ company.websiteLink }}" target="_blank">Website</a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </section>
+                                        </a>
+                                    </div>
+                                </div>
+
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h1 class="m-5">Aucune entreprise trouvé</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

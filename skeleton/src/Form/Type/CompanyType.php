@@ -2,7 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Entreprises;
+use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -16,16 +16,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 //Create an array with all the programming languages
 
 
-class SocietyType extends AbstractType
+class CompanyType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options) : void
     {
         $builder
 
-            ->add('compagnyName',TextType::class)
-            ->add('compagnyPicture')
-            ->add('location')
+            ->add('name',TextType::class)
+            ->add('picture')
+            ->add('address')
             ->add('websiteLink')
             ->add('save', SubmitType::class, ['label' => 'Create Society'])
         ;
@@ -34,7 +34,7 @@ class SocietyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver) : void
     {
         $resolver->setDefaults([
-            'data_class' => Entreprises::class,
+            'data_class' => Company::class,
         ]);
     }
 }

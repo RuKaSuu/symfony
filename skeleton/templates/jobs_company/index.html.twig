@@ -31,32 +31,32 @@
     <div class="text-center d-flex justify-content-center align-items-center">
         <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
 
-            <h1 class="m-5">Listes des Offres d'emplois</h1>
+            <h1 class="m-5">Listes des Offres de {{ companyName.name }}</h1>
 
             <div class="container text-center">
-                {% if jobs %}
+                {% if jobsCompany %}
                     <div class="row">
-                        {% for job in jobs %}
+                        {% for jobCompany in jobsCompany %}
                             <div class="col mb-5">
                                 <div class="container">
                                     <section class="mx-auto my-5" style="width: 18rem;">
                                         <div class="card testimonial-card mt-2 mb-3">
                                             <div class="card-up aqua-gradient"></div>
                                             <div class="avatar mx-auto white">
-{#                                                {% if job.profilePicture == "" %}#}
-                                                    <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
-{#                                                {% else %}#}
-{#                                                    <img class="rounded-circle w-50 h-50" src="{{ job.profilePicture }}" alt="">#}
-{#                                                {% endif %}#}
+                                                {#                                                {% if job.profilePicture == "" %}#}
+                                                <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
+                                                {#                                                {% else %}#}
+                                                {#                                                    <img class="rounded-circle w-50 h-50" src="{{ job.profilePicture }}" alt="">#}
+                                                {#                                                {% endif %}#}
                                             </div>
                                             <div class="card-body text-center">
-                                                <h4 class="card-title font-weight-bold">{{ job.company.name }}</h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">{{ job.Title }}</h6>
+                                                <h4 class="card-title font-weight-bold">{{ jobCompany.company.name }}</h4>
+                                                <h6 class="card-subtitle mb-2 text-muted">{{ jobCompany.Title }}</h6>
                                                 <hr>
                                                 <p class="card-subtitle">
-                                                    {{ job.Description }}
+                                                    {{ jobCompany.Description }}
                                                 </p>
-                                                {% for skill in job.skills %}
+                                                {% for skill in jobCompany.skills %}
                                                     <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>
                                                 {% endfor %}
                                             </div>

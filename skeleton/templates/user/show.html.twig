@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SocietyController!{% endblock %}
+{% block title %}Hello DisplayUsersController!{% endblock %}
 
 {% block body %}
 
@@ -21,49 +21,41 @@
             margin-top: -75px;
         }
 
-        p {
-            font-size: 0.9rem;
-        }
-
     </style>
 
     {% include('navbar.html.twig') %}
-
     <div class="text-center d-flex justify-content-center align-items-center">
         <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
 
-            <h1 class="m-5">Listes des Entreprises</h1>
+            <h1 class="m-5">Listes des Chercheurs d'emplois</h1>
 
             <div class="container text-center">
-                {% if societies %}
+                {% if users %}
                     <div class="row">
-                        {% for society in societies %}
+                        {% for user in users %}
                             <div class="col mb-5">
                                 <div class="container">
                                     <section class="mx-auto my-5" style="width: 18rem;">
                                         <div class="card testimonial-card mt-2 mb-3">
                                             <div class="card-up aqua-gradient"></div>
                                             <div class="avatar mx-auto white">
-                                                {% if society.compagnyPicture == "" %}
+                                                {% if user.profilePicture == "" %}
                                                     <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
                                                 {% else %}
-                                                    <img class="rounded-circle w-50 h-50" src="{{ society.compagnyPicture }}" alt="">
+                                                    <img class="rounded-circle w-50 h-50" src="{{ user.profilePicture }}" alt="">
                                                 {% endif %}
                                             </div>
                                             <div class="card-body text-center">
-                                                <h4 class="card-title font-weight-bold">{{ society.compagnyName }}</h4>
-                                                {% if society.location == "" %}
-                                                    <h6 class="card-subtitle mb-2 text-muted">Pas d'adresse renseignée</h6>
-                                                {% else %}
-                                                    <h6 class="card-subtitle mb-2 text-muted">{{ society.location }}</h6>
-                                                {% endif %}
-
+                                                <h4 class="card-title font-weight-bold">{{ user.name }} {{ user.surname }}</h4>
+                                                <h6 class="card-subtitle mb-2 text-muted">{{ user.age }} ans</h6>
                                                 <hr>
-                                                {% if society.websiteLink == "" %}
-                                                    <p>Pas de lien disponible</p>
-                                                {% else %}
-                                                    <a class="text-decoration-none" href="{{ society.websiteLink }}" target="_blank">Website</a>
-                                                {% endif %}
+                                                <p>
+                                                    BAC+{{ user.levels }} <br>
+                                                    {% for skill in user.skills %}
+                                                        <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>
+                                                    {% endfor %}
+
+                                                </p>
                                             </div>
                                         </div>
                                     </section>
@@ -72,7 +64,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <h1 class="m-5">Aucune entreprise trouvé</h1>
+                    <h1 class="m-5">Aucun utilisateur trouvé</h1>
                 {% endif %}
             </div>
         </div>
