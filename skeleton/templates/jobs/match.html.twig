@@ -1,17 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JobsController!{% endblock %}
+{% block title %}Matching{% endblock %}
 
 {% block body %}
     <style>
-        .tbody tr:nth-child(odd) {
-            background-color: #E6E6E6;
-            text-align: center;
+
+        .testimonial-card .card-up {
+            height: 80px;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
         }
 
-        .tbody td {
-            padding: 10px;
+        .aqua-gradient {
+            background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
         }
+
+        .testimonial-card .avatar {
+            width: 140px;
+            margin-top: -75px;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
     </style>
 
 
@@ -19,38 +31,37 @@
         {{ include('navbar.html.twig') }}
 
         <div class="text-center d-flex flex-column align-items-center m-5">
-            <h1>Match</h1>
+{#            <h1>Match</h1>#}
             <div class="w-75 justify-content-center align-items-center">
                 {% for user in users %}
-                <table class="table table-dark table-hover table-striped rounded overflow-hidden">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Location</th>
-                        <th>Create At</th>
-                        <th>Minimum Degree</th>
-                        <th>Technos</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody class="tbody">
+                    <h3 class="text-primary text-decoration-underline">{{ user.name }}</h3>
+                <div class="row">
                     {% for match in jobsMatches[user.id] %}
-                        <tr>
-                            <td>{{ match.id }}</td>
-                            <td>{{ match.title }}</td>
-                            <td>{{ match.description }}</td>
-                            <td>{{ match.location }}</td>
-                            <td>{{ match.postDate|date('d/m/Y') }}</td>
-                            <td>{{ match.degree }}</td>
-                            {% for skill in match.skills %}
-                                <td>{{ skill }}</td>
-                            {% endfor %}
-                        </tr>
+                        <div class="col mb-5">
+                            <div class="container">
+                                <section class="mx-auto my-5" style="width: 18rem;">
+                                    <div class="card testimonial-card mt-2 mb-3">
+                                        <div class="card-up aqua-gradient"></div>
+                                        <div class="avatar mx-auto white">
+                                            <img class="rounded-circle w-50 h-50" src="https://static.thenounproject.com/png/363633-200.png" alt="">
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title font-weight-bold">{{ match.company.name }}</h4>
+                                            <h6 class="card-subtitle mb-2 text-muted">{{ match.Title }}</h6>
+                                            <hr>
+                                            <p class="card-subtitle">
+                                                {{ match.Description }}
+                                            </p>
+                                            {% for skill in match.skills %}
+                                                <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </div>
                 {% endfor %}
             </div>
         </div>

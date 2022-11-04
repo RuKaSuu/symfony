@@ -111,8 +111,6 @@ class JobsController extends AbstractController
 
         $jobsMatches = [];
 
-
-
         foreach ($users as $user) {
             $jobsMatches[] = $user->getId();
             $jobsMatches[$user->getId()] = [];
