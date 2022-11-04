@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Entreprises;
 use App\Entity\Jobs;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -18,21 +19,58 @@ class AppFixtures extends Fixture
         $user->setName('Lucas');
         $user->setSurname('Goncalves');
         $user->setAge(19);
-        $user->setAddress('14 rue du polisson, 95490 Vauréal');
+        $user->setAddress('Vauréal');
         $user->setLevels('2');
         $user->setSkills(['PHP', 'Symfony', 'HTML', 'CSS', 'JS', 'SQL']);
 
+        $user2 = new User();
+        $user2->setName('Théo');
+        $user2->setSurname('Landemaine');
+        $user2->setAge(19);
+        $user2->setAddress('Osny');
+        $user2->setLevels('2');
+        $user2->setSkills(['PHP', 'Symfony', 'ReactJS', 'CSS', 'JS']);
+
+
         $jobs = new Jobs();
-        $jobs->setJobName('Développeur Web');
-        $jobs->setJobTitle('React Native|JS Developer');
-        $jobs->setJobDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
-        $jobs->setJobCreator('Mark Zuckerberg');
-        $jobs->setJobLocation('London');
-        $jobs->setJobDegree('Master 1');
-        $jobs->setJobPostDate(new \DateTime());
+        $jobs->setName('Développeur Web');
+        $jobs->setTitle('React Native|JS Developer');
+        $jobs->setDescription('React Native or JS Developer for a web application to a mobile application with a 6 months contract');
+        $jobs->setCreator('Mark Zuckerberg');
+        $jobs->setLocation('London');
+        $jobs->setDegree('Master 1');
+        $jobs->setSkills(['PHP', 'Symfony', 'HTML', 'CSS', 'JS', 'SQL']);
+        $jobs->setPostDate(new \DateTime());
+
+        $jobs2 = new Jobs();
+        $jobs2->setName('Développeur Frontend');
+        $jobs2->setTitle('JS Developer');
+        $jobs2->setDescription('JS Developer for a web application with a 1 year contract');
+        $jobs2->setCreator('Bill Gates');
+        $jobs2->setLocation('Paris');
+        $jobs2->setDegree('Master 2');
+        $jobs2->setSkills(['PHP', 'Symfony', 'ReactJS', 'CSS', 'JS']);
+        $jobs2->setPostDate(new \DateTime());
+
+        $society = new Entreprises();
+        $society->setCompagnyName('Facebook');
+        $society->setCompagnyPicture('https://www.facebook.com/images/fb_icon_325x325.png');
+        $society->setLocation('London');
+        $society->setWebsiteLink('https://www.facebook.com/');
+
+        $society2 = new Entreprises();
+        $society2->setCompagnyName('Microsoft');
+        $society2->setCompagnyPicture('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/1910px-Microsoft_logo_-_2012_%28vertical%29.svg.png');
+        $society2->setLocation('Paris');
+        $society2->setWebsiteLink('https://www.microsoft.com/fr-fr/');
+
 
         $manager->persist($user);
+        $manager->persist($user2);
         $manager->persist($jobs);
+        $manager->persist($jobs2);
+        $manager->persist($society);
+        $manager->persist($society2);
         $manager->flush();
 
 
