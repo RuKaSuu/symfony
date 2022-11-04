@@ -2,16 +2,15 @@
 
 namespace App\Form\Type;
 
-use App\Entity\User;
+use App\Entity\Jobs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class JobsType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options) : void
@@ -36,12 +35,9 @@ class UserType extends AbstractType
         ];
 
         $builder
-            ->add('name',TextType::class)
-            ->add('surname', TextType::class)
-            ->add('age', IntegerType::class)
-            ->add('address', TextType::class)
-            ->add('profilePicture')
-            ->add('levels', ChoiceType ::class, [
+            ->add('Name', TextType::class)
+            ->add('Creator', TextType::class)
+            ->add('Degree', ChoiceType ::class, [
                 'choices' => [
                     'Bac+1' => '1',
                     'Bac+2' => '2',
@@ -50,11 +46,14 @@ class UserType extends AbstractType
                     'Bac+5' => '5',
                 ],
             ])
+            ->add('Description', TextType::class)
             ->add('Skills', ChoiceType::class, [
                 'choices' => $skills,
                 'multiple' => true,
                 'expanded' => true,
             ])
+            ->add('Location', TextType::class)
+//            ->add('jobPicture', TextType::class)
             ->add('save', SubmitType::class , [
                 'label' => 'Create Jobs',
             ])
@@ -64,7 +63,8 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver) : void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Jobs::class,
         ]);
     }
+
 }

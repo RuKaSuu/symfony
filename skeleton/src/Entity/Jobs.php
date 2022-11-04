@@ -15,111 +15,126 @@ class Jobs
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $jobName = null;
+    private ?string $Name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $jobCreator = null;
+    private ?string $Creator = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $jobPostDate = null;
+    private ?\DateTimeInterface $PostDate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $jobDegree = null;
+    private ?string $Degree = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $jobDescription = null;
+    private ?string $Description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $jobTitle = null;
+    private ?string $Title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $jobLocation = null;
+    private ?string $Location = null;
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
+    private array $skills = [];
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getJobName(): ?string
+    public function getName(): ?string
     {
-        return $this->jobName;
+        return $this->Name;
     }
 
-    public function setJobName(string $jobName): self
+    public function setName(string $Name): self
     {
-        $this->jobName = $jobName;
+        $this->Name = $Name;
 
         return $this;
     }
 
-    public function getJobCreator(): ?string
+    public function getCreator(): ?string
     {
-        return $this->jobCreator;
+        return $this->Creator;
     }
 
-    public function setJobCreator(string $jobCreator): self
+    public function setCreator(string $Creator): self
     {
-        $this->jobCreator = $jobCreator;
+        $this->Creator = $Creator;
 
         return $this;
     }
 
-    public function getJobPostDate(): ?\DateTimeInterface
+    public function getPostDate(): ?\DateTimeInterface
     {
-        return $this->jobPostDate;
+        return $this->PostDate;
     }
 
-    public function setJobPostDate(\DateTimeInterface $jobPostDate): self
+    public function setPostDate(\DateTimeInterface $PostDate): self
     {
-        $this->jobPostDate = $jobPostDate;
+        $this->PostDate = $PostDate;
 
         return $this;
     }
 
-    public function getJobDegree(): ?string
+    public function getDegree(): ?string
     {
-        return $this->jobDegree;
+        return $this->Degree;
     }
 
-    public function setJobDegree(?string $jobDegree): self
+    public function setDegree(?string $Degree): self
     {
-        $this->jobDegree = $jobDegree;
+        $this->Degree = $Degree;
 
         return $this;
     }
 
-    public function getJobDescription(): ?string
+    public function getDescription(): ?string
     {
-        return $this->jobDescription;
+        return $this->Description;
     }
 
-    public function setJobDescription(string $jobDescription): self
+    public function setDescription(string $Description): self
     {
-        $this->jobDescription = $jobDescription;
+        $this->Description = $Description;
 
         return $this;
     }
 
-    public function getJobTitle(): ?string
+    public function getTitle(): ?string
     {
-        return $this->jobTitle;
+        return $this->Title;
     }
 
-    public function setJobTitle(string $jobTitle): self
+    public function setTitle(string $Title): self
     {
-        $this->jobTitle = $jobTitle;
+        $this->Title = $Title;
 
         return $this;
     }
 
-    public function getJobLocation(): ?string
+    public function getLocation(): ?string
     {
-        return $this->jobLocation;
+        return $this->Location;
     }
 
-    public function setJobLocation(string $jobLocation): self
+    public function setLocation(string $Location): self
     {
-        $this->jobLocation = $jobLocation;
+        $this->Location = $Location;
+
+        return $this;
+    }
+
+    public function getSkills(): array
+    {
+        return $this->skills;
+    }
+
+    public function setSkills(?array $skills): self
+    {
+        $this->skills = $skills;
 
         return $this;
     }

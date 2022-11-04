@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Entreprises;
 use App\Entity\User;
+use App\Form\Type\SocietyType;
 use App\Form\Type\UserType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,8 +60,8 @@ class UserController extends AbstractController
 //        $baseUser->setLevels('Bac+2');
 
         $form = $this->createForm(UserType::class, $baseUser);
-
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
             $user = $form->getData();
 
@@ -67,7 +69,8 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-//            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('app_display_users');
+
         }
 
         return $this->renderForm('user/index.html.twig', [

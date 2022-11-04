@@ -23,6 +23,7 @@
 
     </style>
 
+    {% include('navbar.html.twig') %}
     <div class="text-center d-flex justify-content-center align-items-center">
         <div class="text-center d-flex flex-column justify-content-center align-items-center w-75 ">
 
@@ -49,10 +50,11 @@
                                             <h6 class="card-subtitle mb-2 text-muted">{{ user.age }} ans</h6>
                                             <hr>
                                             <p>
-                                                BAC+{{ user.levels }} <br> |
+                                                BAC+{{ user.levels }} <br>
                                                 {% for skill in user.skills %}
-                                                    {{ skill }} |
+                                                <span class="badge rounded-pill text-bg-primary">{{ skill }}</span>
                                                 {% endfor %}
+
                                             </p>
                                         </div>
                                     </div>
