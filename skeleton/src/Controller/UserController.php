@@ -69,7 +69,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_display_users');
+            return $this->redirectToRoute('user_render');
 
         }
 
@@ -77,4 +77,16 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/userRender', name: 'user_render')]
+    public function index(ManagerRegistry $doctrine): Response
+    {
+
+        $user = $doctrine->getRepository(User::class)->findAll();
+
+        return $this->render('user/show.html.twig', [
+            'users' => $user,
+        ]);
+    }
+
 }
