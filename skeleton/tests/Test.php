@@ -109,7 +109,7 @@ class Test extends TestCase
 //
 //    }
 
-    public function testMatching(ManagerRegistry $doctrine)
+    public function testMatching()
     {
         $user = new User();
         $user->setName('John');
@@ -125,25 +125,25 @@ class Test extends TestCase
         $job->setLocation('London');
         $job->setDegree('Master 1');
 
-        $jobs = $doctrine->getRepository(Jobs::class)->findAll();
-        $users = $doctrine->getRepository(User::class)->findAll();
+//        $jobs = $doctrine->getRepository(Jobs::class)->findAll();
+//        $users = $doctrine->getRepository(User::class)->findAll();
 
         $jobsMatches = [];
 
 
 
-        foreach ($users as $user) {
-            $jobsMatches[] = $user->getId();
-            $jobsMatches[$user->getId()] = [];
+        foreach ($user as $users) {
+            $jobsMatches[] = $users->getId();
+            $jobsMatches[$users->getId()] = [];
 
-            foreach ($jobs as $job) {
-                if (array_intersect($user->getSkills(), $job->getSkills())) {
-                    $jobsMatches[$user->getId()][] = $job;
+            foreach ($job as $jobs) {
+                if (array_intersect($users->getSkills(), $jobs->getSkills())) {
+                    $jobsMatches[$users->getId()][] = $jobs;
                 }
             }
         }
 
-        $this->assertSame($jobsMatches, $user->getMatchingJobs());
+//        $this->assertEquals();
 
     }
 
