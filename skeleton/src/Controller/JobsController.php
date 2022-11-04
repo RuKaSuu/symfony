@@ -77,11 +77,6 @@ class JobsController extends AbstractController
     {
         $jobRepository = $doctrine->getRepository(Jobs::class)->findAll();
 
-//        for ($i = 0; $i < count($jobRepository); $i++) {
-//            $arr = $jobRepository[$i]->getJobSkills();
-//        }
-//
-//        dd($arr);
 
         return $this->render('jobs/show.html.twig', [
             'jobs' => $jobRepository,
